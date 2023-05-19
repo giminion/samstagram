@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼스타그램!</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://t1.daumcdn.net/cfile/tistory/99B6AB485D09F2132A">
+</head>
+<style>
+    .bang {
+        width: 210px;
+        height: 760px;
+        float: left;
+        border-right: 1px solid #D8D8D8;
+        margin-top:-25px;
+    }
+
+    .insta {
+        background-color: white;
+        width: 875px;
+        height: 730px;
+        margin-left: 425px;
+        margin-top: 30px;
+    }
+
+    .profile-box {
+        background-color: white;
+        width: 280px;
+        height: 185px;
+        margin-left: 20px;
+        float: left;
+
+    }
+
+    .profile-imgbox {
+        background-color: white;
+        width: 138px;
+        height: 138px;
+        margin-left: 40px;
+        border: 3.5px solid transparent;
+        border-radius: 50%;
+        background-image: linear-gradient(#fff, #fff),
+            linear-gradient(to right, red 0%, orange 100%);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+    }
+
+    .profile-img {
+        margin-top: 3px;
+        margin-left: 2px;
+        border-radius: 50%;
+        width: 128px;
+        height: 128px;
+        background-size: cover;
+
+
+    }
+
+    .word {
+        background-color: white;
+        width: 530px;
+        height: 185px;
+        margin-left: 300px;
+
+
+    }
+
+    .word-top {
+        background-color: white;
+        width: 330px;
+        height: 48px;
+    }
+
+    .follow-btn {
+        width: 82px;
+        height: 32px;
+        background-color: #0095f6;
+        border-radius: 5px;
+        margin-top: 9px;
+        margin-left: 50px;
+        font-size: 13px;
+        border: 0 solid black;
+        color: white;
+        font-weight: bold;
+        float: left;
+    }
+    .follow-btn:hover {
+        background-color:#0080FF;
+}
+    .top-id {
+        float: left;
+        width: 97px;
+        height: 25px;
+    }
+
+    .btn-img {
+        width: 15px;
+        height: 16px;
+
+        background-size: cover;
+    }
+
+    .add-btn {
+        width: 34px;
+        height: 32px;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        border: 0 solid black;
+        margin-top: 10px;
+        margin-left: 8px;
+
+    }
+    .add-btn:hover {
+        background-color:#BDBDBD;
+}
+    .more {
+        float: right;
+        width: 17px;
+        height: 17px;
+        background-color: white;
+        display: flex;
+        margin-top: 18px;
+        margin-right: 25px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .more-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background-size: cover;
+    }
+
+    .mid {
+        width: 330px;
+        height: 50px;
+        background-color: white;
+    }
+
+    .mid-text {
+        font-size: 14px;
+        line-height: 50px;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .mid-text-1 {
+        font-size: 14px;
+        line-height: 50px;
+        text-align: center;
+        display: inline-block;
+        font-weight: 550;
+    }
+
+    .bot {
+        width: 330px;
+        height: 87px;
+        background-color: white;
+
+    }
+
+    .bot-word {
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .bot-word-1 {
+        font-size: 11px;
+    }
+
+    .stick {
+        border-top: 1px solid #D8D8D8;
+        width: 875px;
+        height: 52.8px;
+    }
+    .stick-icon1{
+        width: 50px;
+        height: 52.8px;
+        display: flex;
+        margin-left:400px;
+        border-top:1px solid black;
+    }
+    .stick-icon1-img{
+        width: 16px;
+        height: 16px;
+        margin-top:16px;
+    }
+    .stick-icon2{
+        margin-top: -16px;
+        width: 50px;
+        height: 16px;
+        display: flex;
+        margin-left: 460px ;
+        margin-top:-55px;
+    }
+    .stick-icon2-img{
+        width: 16px;
+        height: 16px;
+        margin-top:18px;
+    }
+    .post{
+        width: 960px;
+        height: 309px;
+        margin-left:420px;
+        margin-top: -475px;
+    }
+    .post-img{
+        width: 288px;
+        height: 288px;
+        float:left;
+        margin-right:10px ;
+    }
+    .etc-word{
+        margin-top: 100px;
+        margin-left: 450px;
+        color:#737373;
+        font-size: 12px;
+    }
+    .mid2 {
+        height: 580px;
+        width: 260px;
+        border-right: 0.5px solid #8e8e8e;
+        overflow: auto;
+    }
+    .mid2_img{
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        margin-top: -10px;
+        margin-left: 10px;
+        border: 0.5px solid #8e8e8e;			  
+    }
+    .mid2_word{
+
+    margin-top: -45px;
+    margin-left: 60px;
+    }
+    .mid2_id{
+    font-weight: bold;
+    display: inline;
+    font-size: 5px;
+    }
+    .mid2_l{
+    margin-top: -15px;
+    font-size: 3px;
+    }
+    .mid2-logo-box{
+        width: 260px;
+        height:80px;
+        border-right:0.5px solid #8e8e8e;
+    }
+    .mid2-logo{
+        width: 170px;
+        margin-left: 25px;
+
+    }
+    .input-comment {
+        height: 55px;
+        width: 190px;
+        border: 0px solid #8e8e8e;
+    }
+    .submit-comment {
+        height: 62px;
+        width: 60px;
+        font-size: 14pt;
+        border-top: 0;
+        border-right:0;
+        border-left:0;
+        border-bottom: 1px solid #8e8e8e;
+        background-color: white;
+        color: lightskyblue;
+        margin-bottom: 10;
+    }
+    .cot {
+        background-color: white;
+        height: 63px;
+        width: 260px;
+        border: 0.5px solid #8e8e8e;
+    }
+    .bang-logo{
+        width:120px;
+        height:30px;
+        margin-left:20px;
+        margin-top:50px;
+    }
+    .bang-logo-img{
+        background-size: cover;
+        width:100%;
+        height:100%;
+    }
+    .home-logo{
+        width:180px;
+        height:40px;
+        margin-left:20px;
+        margin-top:20px;
+        border-radius: 5px;
+    }
+    .home-logo-img{
+        background-size: cover;
+        width:20px;
+        height:20px;
+        margin-left:10px;
+        margin-top:10px;
+    }
+    .home-logo:hover {
+        background-color:#F2F2F2;
+}
+    .home-logo-img-2{
+        background-size: cover;
+        width:20px;
+        height:20px;
+        margin-left:10px;
+        border-radius: 50%;
+        border : 2px solid black;
+    }
+    .profile-logo{
+        width:100px;
+        height:30px;
+        margin-left:20px;
+        margin-top:20px;
+    }
+    .profile-img-2{
+        background-size: cover;
+        width:20px;
+        height:20px;
+        border-radius: 50%;
+        border : 2px solid black;
+    }
+    .option-logo{
+        width:180px;
+        height:40px;
+        margin-left:20px;
+        margin-top:120px;
+        border-radius: 5px;
+    }
+    .option-img{
+        background-size: cover;
+        width:30px;
+        height:30px;
+        margin-top:6px;
+    }
+    .option-logo:hover {
+        background-color:#F2F2F2;
+}
+    .bang-word{
+        font-size:20px;
+        font-weight:bold;
+    }
+    .word-box{
+        margin-top:-20px;
+    }
+    .home-word{
+        font-size:17px; 
+        margin-left:40px; 
+        margin-top:-22px;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        show_comment();
+      });
+      function save_comment() {
+        let insta_comment = $('#input-comment2').val()
+        let formData = new FormData();
+        formData.append("insta_comment_give", insta_comment);
+        fetch('/guestbook', {method: "POST",body: formData,}).then((res) => res.json()).then((data) => {
+            alert(data["msg"]);
+            window.location.reload();
+          });
+      }
+      function show_comment() {
+        fetch('/guestbook').then((res) => res.json()).then((data) => {
+            let rows = data['result']
+            rows.forEach((a) =>{
+              let insta_comment=a['insta_comment']
+              let temp_html=`               
+              <img src="https://blog.kakaocdn.net/dn/TooXG/btsgfqIvZWU/Bhe0aI9TTKR4skHduaoKiK/img.gif" class="mid2_img">
+              <div class="mid2_word">
+              <p class="mid2_id">Anonymous </p>
+              <p style="font-size:13px">${insta_comment}</p>
+              <p class="mid2_l"> 1분전&nbsp;&nbsp;&nbsp;&nbsp; 좋아요&nbsp;&nbsp;&nbsp;&nbsp; 답글달기 </p>
+              `
+              $('#mid2_comment_list').append(temp_html)
+
+            })
+                })
+      }
+</script>
+<body>
+    <!--방명록 부분-->
+    <div class="bang">
+        <div class="bang-logo">
+           <p class="bang-word"> 𝓼𝓪𝓶𝓼𝓽𝓪𝓰𝓻𝓪𝓶</p>
+        </div>
+        <div type="button" class="home-logo">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdu5X7w%2FbtsguhZfgCE%2FYBH7WQZQfL83V31QMZZXYk%2Fimg.png" class="home-logo-img">
+            <p class="home-word">홈</p>
+        </div>
+        <div class="home-logo">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbRxQIf%2Fbtsgn2WFwSk%2FKhDrC92CLcoTXRsKmTudnk%2Fimg.png" class="home-logo-img">
+            <p class="home-word">검색</p>
+        </div>
+        <div class="home-logo">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbCz9b9%2FbtsgtxIsVpn%2FPFAhiwXgJDqiEk4uMzbZ91%2Fimg.png" class="home-logo-img">
+            <p class="home-word">탐색 탭</p>
+        </div>
+        <div class="home-logo">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbKB87F%2FbtsgtwCNgfX%2Fm3T66cejuF1zD1qBBAwbek%2Fimg.png" class="home-logo-img">
+            <p class="home-word">릴스</p>
+        </div>
+        <div class="home-logo">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F6cd2s%2FbtsgtBxeYiM%2FlHB7M2evmsuA0OYukUI4ck%2Fimg.png" class="home-logo-img">
+            <p class="home-word">메시지</p>
+        </div>
+        <div class="home-logo">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbDMgtR%2FbtsgtwQjXuB%2F0igfK5kd7AfW8XXSqfe5Nk%2Fimg.png" class="home-logo-img">
+            <p class="home-word">알림</p>
+        </div>
+        <div class="home-logo">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZFGIQ%2FbtsguicRmJE%2F4klv9qQlacJTkGuyKfteH1%2Fimg.png" class="home-logo-img">
+            <p class="home-word">만들기</p>
+        </div>
+        <div class="home-logo">
+            <img src="https://media.istockphoto.com/id/1254973475/vector/stars-symbol-emblem-icon.jpg?s=612x612&w=0&k=20&c=XupY1KJWcwrWbN9jtpD7HUYB_BbgjymsXJTDUH_OuHI=" class="home-logo-img-2">
+            <p class="home-word">프로필</p>
+        </div>
+        <div class="option-logo">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbfp1LC%2FbtsgvWNV4sA%2FLBHEk3hqdkct4lK2J8DPr1%2Fimg.png" class="option-img">
+            <p style="font-size:17px; margin-left:40px; margin-top:-28px;">더 보기</p>
+        </div>
+    </div>
+
+    <!--본체-->
+
+    <div class="insta">
+        <!--profile-->
+        <div class="profile-box">
+            <div class="profile-imgbox">
+                <img src="https://media.istockphoto.com/id/1254973475/vector/stars-symbol-emblem-icon.jpg?s=612x612&w=0&k=20&c=XupY1KJWcwrWbN9jtpD7HUYB_BbgjymsXJTDUH_OuHI=" class="profile-img">
+            </div>
+        </div>
+        <div class="word">
+            <div class="word-top">
+                <div class="top-id">
+                    <p style="font-weight:430;font-size:20px;margin-top:10px;">sam_stargram</p>
+                </div>
+                <button type="button" class="follow-btn ">팔로우</button>
+                <button class="add-btn">
+                    <img src="https://cdn4.iconfinder.com/data/icons/set-user-interface/24/add_friend_icon-512.png"
+                        class="btn-img">
+                </button>
+                <div class="more">
+                    <img src="https://static.thenounproject.com/png/1559600-200.png" class="more-img" alt="more">
+                </div>
+            </div>
+            <!--mid-->
+            <div class="mid">
+                <p class="mid-text">게시물&nbsp&nbsp<span class="mid-text-1">3&nbsp</span> 팔로워&nbsp&nbsp<span
+                        class="mid-text-1">17만&nbsp</span> 팔로우&nbsp&nbsp
+                    <span class="mid-text-1">0</span>
+                </p>
+            </div>
+            <div class="bot">
+                <p class="bot-word">삼스타그램</p>
+                <div class="word-box">
+                    <p class="bot-word-1">안녕하세요 저희는 팀 <span style="color:#0095f6;">#삼스타그램</span>입니다! <br>저희는 협업하고 안정적으로 작동하는 페이지 만들기를 목표로 하고있으며 서로 돕고 이끌자!라는 모토로 활동을 하고있습니다&nbsp&nbsp&nbsp&nbsp 크롬기준 왼쪽부터 100% 90% 50% 배율로 보세요<br></p>
+                </div>
+            </div>
+        </div>
+        <div class="stick">
+            <div class="stick-icon1">
+                <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/grid-5067840-4222645.png" class="stick-icon1-img">
+                <p style="font-size:6px;font-weight:bold;margin-top:16px;">게시물</p>
+            </div>
+ 
+            <div class="stick-icon2">
+                <img src="https://cdn0.iconfinder.com/data/icons/instagram-ui-1/24/Instagram-UI_tagged-512.png" class="stick-icon2-img">
+                <p style="font-size:6px;margin-top:18px;">태그됨</p>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="post">
+        <a href="/jwpage">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcYzrs1%2FbtsgB2gIzPx%2FoOxom1CIadBfspOJNz38K1%2Fimg.png"   alt="..."class="post-img">
+            </a>
+        <a href="/mhpage">
+        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdkNy0k%2FbtsgmIcXsC6%2Fp1lsfOXTa71gk38EOA3F2K%2Fimg.png"   alt="..."class="post-img">
+        </a>
+        <a href="/dspage">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbCtgsP%2FbtsgugMCbmd%2FMRroeXI6x5JSmXF1CknddK%2Fimg.png"   alt="..." class="post-img">
+            </a>
+    </div>
+    <div class="etc-word">
+        <p>Meta 소개 블로그 채용 정보 도움말 API 개인정보처리방침 약관 인기 계정 위치 Instagram Lite 연락처 업로드 & 비사용자 Meta Verified 한국어
+            <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp한국어 © 2023 Instagram from Meta</p>
+        </p>
+    </div>
+</body>
+
+</html>

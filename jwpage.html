@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- CSS only -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<meta charset="utf-8">
+	<title>jinwoong's page</title>
+	<style>
+		body{
+			background-image : url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbj45Af%2FbtsgvBJC9Vx%2FQK9NPLZo3nGTvRfmTutmjk%2Fimg.png');
+			background-repeat : no-repeat;
+			background-size : cover ;
+		}
+		.post {
+			margin-left: 243px;
+			margin-top:-5px;
+			height: 680px;
+			width: 1130px;
+		}
+
+		.img_box {
+			margin-top: 30px;
+			height: 680px;
+			width: 690px;
+			background-color: black;
+			float: left;
+		}
+
+		.img {
+			background-size: cover;
+			height: 680px;
+			width: 690px;
+		}
+
+		.top {
+			background-color: aqua;
+			height: 680px;
+			width: 440px;
+			float: left;
+			margin-top: 30px;
+		}
+
+		.top_name {
+			background-color: white;
+			height: 74px;
+			width: 440px;
+			border: 1px solid #8e8e8e;
+		}
+
+		.mid {
+			background-color: white;
+			height: 459px;
+			width: 440px;
+			border: 0.5px solid #8e8e8e;
+			overflow: auto;
+		}
+
+		.cot {
+			background-color: white;
+			height: 63px;
+			width: 440px;
+			border: 0.5px solid #8e8e8e;
+		}
+
+		.bot {
+			background-color: white;
+			height: 84px;
+			width: 440px;
+			border: 0.5px solid #8e8e8e;
+		}
+
+		.top_img {
+			height: 40px;
+			width: 40px;
+			border-radius: 50px;
+			margin-top: 15px;
+			margin-left: 10px;
+			border-radius: 50px;
+			border: 0.5px solid #8e8e8e;
+		}
+
+		.top_btn {
+			background-color: white;
+			border: 0px solid;
+			position: relative;
+			top: 10px;
+			font-size: 14px;
+			font-weight: bold;
+		}
+
+		.top_btn2 {
+			background-color: white;
+			border: 0px solid;
+			position: relative;
+			top: 10px;
+			font-size: 14px;
+			color: #0095F6;
+			font-weight: bold;
+		}
+
+		.icons-react {
+			height: 40px;
+			padding: 7px 11px 0px 16px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.icons-left {
+			display: flex;
+			align-items: center;
+		}
+
+		.icons-left .icon-react {
+			margin-right: 12px;
+		}
+
+		.icon-react_DM {
+			height: 25px;
+			padding: 7px 11px 0px 0px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.icon-react_bookmark {
+			height: 25px;
+			padding: 7px 11px 0px 0px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.icon-react_heart {
+			height: 25px;
+			padding: 7px 11px 0px 0px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.icon-react_comment {
+			height: 25px;
+			padding: 7px 11px 0px 0px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.like {
+			margin-left: 10px;
+			margin-bottom: 30px;
+			font-size: 5pt;
+		}
+
+		.comment {
+			height: 63px;
+			width: 440px;
+		}
+
+		.input-comment {
+			height: 55px;
+			width: 328px;
+			border: 0px solid #8e8e8e;
+			background-color: white;
+		}
+
+		.submit-comment {
+			height: 62px;
+			width: 100px;
+			background-color: white;
+			border: 0px solid #8e8e8e;
+			font-size: 14pt;
+			color: lightskyblue
+		}
+
+		.bang {
+			height: 50px;
+			width: 440px;
+			position: relative;
+			margin-top: 20px;
+  
+		}
+		.mid_img{
+				height: 30px;
+				width: 30px;
+				border-radius: 50%;
+				margin-top: -10px;
+				margin-left: 10px;
+				border: 0.5px solid #8e8e8e;			  
+		}
+		.mid_word{
+
+			margin-top: -45px;
+			margin-left: 60px;
+		}
+		.mid_id{
+			font-weight: bold;
+			display: inline;
+			font-size: 5px;
+		}
+		.mid_l{
+			margin-top: -15px;
+			font-size: 3px;
+		}
+		.bold-text {
+			font-weight: bold;
+		  }
+		  .submit-comment{
+			border-bottom: 0.5px solid #8e8e8e;
+		  }
+	</style>
+	<script>
+		$(document).ready(function () {
+			show_comment();
+		  });
+		  function save_comment() {
+			let insta_comment = $('#input-comment2').val()
+			let formData = new FormData();
+			formData.append("insta_comment_give", insta_comment);
+			fetch('/guestbook', {method: "POST",body: formData,}).then((res) => res.json()).then((data) => {
+				alert(data["msg"]);
+				window.location.reload();
+			  });
+		  }
+		  function show_comment() {
+			fetch('/guestbook').then((res) => res.json()).then((data) => {
+				let rows = data['result']
+				rows.forEach((a) =>{
+				  let insta_comment=a['insta_comment']
+				  let temp_html=`<div class="bang" id="mid_comment_list">
+					  <img src="https://blog.kakaocdn.net/dn/TooXG/btsgfqIvZWU/Bhe0aI9TTKR4skHduaoKiK/img.gif" class="mid_img">
+					  <div class="mid_word">
+					  <p class="mid_id" id="insta_id"> Anonymous </p>
+					  <p id="insta_comment">${insta_comment}</p>
+					  <p class="mid_l"> 1분전&nbsp;&nbsp;&nbsp;&nbsp; 좋아요&nbsp;&nbsp;&nbsp;&nbsp; 답글달기 </p>
+					  </div>
+					</div>
+				  `
+				  $('#mid_comment_list').append(temp_html)
+	
+				})
+					})
+		  }
+	</script>
+</head>
+<body>
+	<div class="logo">
+
+	</div>
+	<div class="post">
+
+		<div class="img_box">
+			<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcYzrs1%2FbtsgB2gIzPx%2FoOxom1CIadBfspOJNz38K1%2Fimg.png" class="img"
+							alt="...">
+					</div>
+					<div class="carousel-item">
+						<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FRkrPC%2FbtsgjmUdOpC%2FCSbPsbk7JRC1zkBV0Vtn1k%2Fimg.png" class="img"
+							alt="...">
+					</div>
+					<div class="carousel-item">
+						<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F6B53v%2FbtsgexoOxoS%2FOsKpY4f8FtGck268D78n7k%2Fimg.png"
+							class="img" alt="...">
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+		<div class="top">
+			<div class="top_name">
+				<div>
+					<img src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f31f.svg"
+						class="top_img">
+					<button type="button" class="top_btn">&nbsp;&nbsp;sam_stargram</button>
+					<button type="button" class="top_btn2">팔로우</button>
+				</div>
+			</div>
+
+			<!--방명록 부분-->
+
+			<div class="mid">
+				<div class="bang" id="mid_comment_list">
+					<img src="https://blog.kakaocdn.net/dn/TooXG/btsgfqIvZWU/Bhe0aI9TTKR4skHduaoKiK/img.gif" class="mid_img">
+					<div class="mid_word">
+					<p class="mid_id">sparta_code </p>
+					<p>잘보고갑니다</p>
+					<p class="mid_l"> 1분전&nbsp;&nbsp;&nbsp;&nbsp; 좋아요&nbsp;&nbsp;&nbsp;&nbsp; 답글달기 </p>
+					</div>
+				</div>
+			</div>
+
+			<!--좋아요 부분-->
+			<div class="bot">
+				<div class="icons-react">
+					<div class="icons-left">
+						<img class="icon-react_heart"
+							src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png" alt="하트">
+						<img class="icon-react_comment"
+							src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/comment.png" alt="말풍선">
+						<img class="icon-react_DM"
+							src="https://github.com/MiaJLee/westagram/blob/master/img/dm.png?raw=true" alt="DM">
+					</div>
+					<img class="icon-react_bookmark"
+						src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/bookmark.png" alt="북마크">
+
+				</div>
+				<p class="like">  sparta_code외 <span class="bold-text">34명</span>이 좋아합니다.<br>1시간전<br></p>
+			</div>
+			<!--댓글 부분-->
+			<div class="cot">
+				<input id="input-comment2" class="input-comment" type="text" placeholder="&nbsp;&nbsp;&nbsp;댓글 달기...">
+				<button type="submit" onclick="save_comment()" class="submit-comment" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;게시</button>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

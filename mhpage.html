@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안민현 개인페이지</title>
+    <style>
+        .samstagram {
+            margin: 50px 0 0 200px;
+        }
+
+        .slidesize {
+            width: 700px;
+            height: 700px;
+            margin: 30px 0 0 400px;
+            padding-top: 40px;
+            box-shadow: 3px 3px 3px gray;
+            border-top: 1px solid grey;
+            border-left: 1px solid grey;
+        }
+
+        .namebook {
+            position: absolute;
+            width: 400px;
+            height: 700px;
+            margin: 30px 0 0 1100px;
+            background-color: white;
+            border-top: 1px solid grey;
+            border-left: 1px solid grey;
+            box-shadow: 3px 3px 3px gray;
+        }
+
+        .profile {
+            position: absolute;
+            border-radius: 100px;
+            margin: 3px 0 0 15px;
+            border: 1px solid grey;
+        }
+
+        .visitorpicture{
+            position: absolute;
+            border-radius: 100px;
+            border: 1px solid grey;
+            margin-left: 10px;
+            margin-top: 8px;
+        }
+
+        .visitor{
+            margin: 0 0 0 40px;
+            
+        }
+
+        .name{
+            margin-left: 10px;
+        }
+
+        .profile-box {
+            height: 50px;
+            border-bottom: 1px solid grey;
+        }
+
+        .profile-name {
+            margin: 10px 0 0 70px;
+        }
+
+        .bang {
+            position: absolute;
+            width: 400px;
+            height: 557px;
+            overflow: auto;
+        }
+
+        .insert-name {
+            width: 400px;
+            height: 50px;
+            border-top: 1px solid grey;
+            margin: 565px 0 0 0;
+        }
+
+        .insert-button {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            margin: 3px 0 0 0;
+            border: 0px solid grey;
+        }
+
+        .insert-button:hover {
+            color: blue;
+        }
+
+        .insert-name>input {
+            width: 340px;
+            height: 35px;
+            border: 1px solid transparent;
+            margin-top: 2px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+			show_namelist();
+		  });
+
+        function save_name() {
+            let name = $('#writing').val()
+            let formData = new FormData();
+            formData.append("name_give", name);
+
+            fetch("/mhbook", { method: "POST", body: formData }).then(res => res.json()).then(data => {
+                alert(data["msg"]);
+				window.location.reload();
+            })
+        }
+
+        function show_namelist() {
+            fetch("/mhbook").then(res => res.json()).then(data => {
+                let rows = data['result']
+                rows.forEach((a) =>{
+				  let name=a['name']
+				  let temp_html=`<img src="https://mblogthumb-phinf.pstatic.net/20140907_286/goodmanddo_1410097491233H9enH_JPEG/%C4%AB%C4%AB%BF%C0%C5%E5_%B4%EB%B5%CE.jpg?type=w2"
+                    class="visitorpicture" width="20" height="20"> <p class="visitor"><span style="font-size: 15pt;">visitor</span></p>
+                    <p class ="name" id="name">${name}</p>`
+
+				  $('#name_list').append(temp_html)
+	
+				})
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <img class="samstagram"  
+        src="https://lh3.googleusercontent.com/fife/APg5EOZHQoi5fPaM5g6aW7wYn5o0Y7WF8y-RPceBg51W0EsXme5oIu8angw_qlL9GaXsjQBxUUC4YKfOloyRxzemnPekcOD-ftQYT9t8y3E62L8tzxvpV_qWv4UMDLSVeOzSkwvraU7TSrxk8ohuogHgpmNvaKOUs3n3f4Jv0OJ9NSsZtNl2uTwyEb6LDsc03E3o7p283XfngMQNBZ79sgpKnOviTa_MEf8491I38P2DQp4sXjmwzukgMUv_bys57ara2ymT2GUJXBq-yWrAlvHQCE_NRYPntefcqb_1Y2upye3LZh7czq484Ez6gaLvA4GyKvXfHvtjvZFcSFDEFowvEU-I2IMwImQTIv-f0c5ztzUhXA2fjouU3jdd6Idkak82mOJocSXPjFo-WWHbKITvshV-vG4KVGaUydlH9RC7WhMVApLtJtWBCEJdOkXl7BloNy_LS76b5KgIbXkr1usrzWFHaKIC63y2tF9Jb1GfpIVETTeyMLhNAbBhAx7zkPGkmkDZx46Vr_B7LX5zx-Xa2aqyKvpOgSfXlVl_Q5CPsTv8E1YVTFPzE8ORsk9AtfENC1uGcsx8NfhZpj5d7CrQ2lMsWaYsXb2yXorJO5fcC_-N1FbWcSDadkZFSW2cM1lMlbcw2JOaqv_m9xDAO0EFmFLEgJk796DwXbEm6MRR8dVmRy5VT5mI9r2lXAe-1iR6W-dmmPbYXT4AUbHpwYukasAbKRuEHzRQy2oVv3S_XhytpX9cDQQeHEMtw9o8Rx1vXe8kcchxAlry4tK7C_x-9dO0VTlBVIfKhQDjBX8PAaBP5hRrGeBOfiSoyqab7WSwH1p22R1SFjLFhhFeArs37RYBkMRhSdwwBsAu2AeF_XnMsam4J71Lmy8qlNHqmQElmhbKOb9u932kyJL9DNbYkUMZ9tZgiUmDwXVsWO-SBCr5kMFSi0XzuBz_ve3z9_N-BkKI4X2Pg_xjfk_CxFBW29Zb90R7aH7FpZgelLiS9pTnRwu64YtfSxF2PeTzJcpDd0TkonOLkEkPBzSVH6BrOxIcwMRY16v3GbP50Cf6B4NDVEVVZxLl1_4JV4YJb2Q2NpJl4Oay6IN8BUk4FcvBsCNytu7Oj64bmy9iBdBnY0QxQXmyDOeLVSy8qv0dA-OXfswq6rLBdodYNinMtEx13mDvn-_ybE8TxpawEDgMdPWPURZCp1Y7363ZrW7u24Fub0bOSKgrUQ7cjtPa0gewqiz1N0cFiqCx91vqt7IBGOTnuiGyLeL1qUj6RFtTQ6IDNAPApQFz_j-mFw-U6Po9xScEgj8sEPJYKaCEc6hUOKNBJwLtdRJhFWhA-1I08N5_YG3644PhCSzbVwOkNAWpbDxUtcw0RW5vLUU5Oz3IgJ5XuFGswPNrqOEnl1pvdrHbXgIWX7sfbuzP1o-Cd8UbBoim-mZACN5YCJg0TcHGVd-IHpXB7lG-MXuk-2n8rZLT2QNYoFq5naizP4qGfe9LWHcRQ4FrxOHjtTkMUznNSqdSphzhoh_URp9vfzshtw=w1920-h937"
+        alt="My Image" width="200" height="50"> <!--로고이미지-->
+
+    <div class="namebook"> <!--방명록-->
+        <div class="profile-box">
+            <img src="https://lh3.googleusercontent.com/fife/APg5EOaF7iJygpkUgTg_EWjaCg_sH1KghFeWEdOgU9fg_6qWjHBv2B0Q9TxqCaC_MES0zRFYAKizL8e-yjJDPBd7lfy8OHZNDAKUDjobA_REGhJfvlNYhCb5dnmLgkPSEVa5aDamE5S0eDzK52hFXJP_DqFa0OquthRlGMcNN3yKd4N4UfJJsivv9TpBYKR6Y9vUc9gve86fCoLeUUXrdAu3vDWZ4YNFtEKX8DMJFvMUd4I-0YETRcYjb05vAr10Ea5X1X8LzCOCzB-gZn6l5diXlVLOqqO9qmY_Co5U9vxBGyV4L5G9sx6bDlxwrt4fFjw7DxIdlpirViAtnLiqA2Ug5CJmvKluGMqlXF2k-RqaayJwuKwifGuR0FmZW9Q0D330vFitjLiR9hQiEx9KecqKoKZ9brfJPZ0scZ_4GgNQeboTV16ZnxrbAaOX_Oo9xOJp3-TyC4JJppnLDNKbO6JnpY5rfAc7y00jWP_S0-G-rivbuZXkryM7iQSU6ZAVWhB7LvPqiIbGyd2rZ95btjuBIhe3nXpCYqICRkMpxXopM7z1ZyAaojJzShPB60eoVNpL_-QYgAg3gYhZxLfvuxMmaCQRjrgU9u6CaFjbO-q9-P3CLoxbIHf2phREtiJqCBnfzfBbLZwBaK3caV2mUNLyzwWVkLzlAqTrRbh2qqbEQK15SwQThU7sj5AOlAVlAYHESOVtZNxGURUt6_P9Gjp2gfrOLbcWVDdZ_7mE_-dgfYaLby3E2h6AOamPQTi8qgeDX09luqEQR4W_d1jXbLtjMCidRCIb1XKAbnushc4vqhC0fBaAUvFsgru1xgEn11-HP5gV8qgLbU-2YLKCjMxZHe0sK-AxW-GDWlnm-4Kxjvfg81H53rZxvxt2haIgB3zmA0ddZDhFKBFFX86v7D6EuRaaHF5EAxe6OQIsrCR86qK08CrZIw3fYHDv2CItwti2a6g4XU8qfPXTdX2xYShvlkbs0QCrS5uPnlygyZ8CVhwAGwd4DoynQdy_15WEaQ-hDeH4Ec-UjUQNHch_Fhn00yPzLtMLqFvnxUh4BbIK0ye8NGcsiC-GkXWZlWhK9ZTNeBA4QXBQ8aaYQs6mZhjF_fsBP7pdPIILzBcplomX93BulseNRQRma8ovh13T7AnoyRC-7R4k5_7qYCVgCkrJI7-_EKRxsRQAXr1YoHFs8MOwTIF5aAub-hZ4eVLrshSQmd7Agh7DpQcl6QazRMVecrkuLdBNFEl4HwL6zsGeUFZAGWnPMLqu3Ke0RNjZfRbj3ELGqrVECRdACnxllFTDPBr0VS1Su1DIA1y5EZWRHJWygnGETzQPLTApDwIBbmdgGvJbzM7D6herGDKy-riozn0F_nOh1KXu3RBHM7JCqueZRaHtZ7dmCuymLh3W3CTZtucVf7MHGAulvoq_CfMIY3qyGhS1BYzSulYOA8rU2M3Zjynh_Phs0fStrQPMyHL5Z69ppq48lOxy8CN0gMMvzlq9hOZuo1lDe2JtkPrdcV6AAG2UWEybE4PPpIgYnA=w1920-h937"
+                class="profile" width="40" height="40">
+            <h3 class="profile-name"><span style="font-size: 15pt;">An minhyun</span></h3>
+        </div>
+        <h3><span style="font-size: 20px;">- visitors</span></h3>
+        <div class="bang" id="name_list"> <!--목록-->
+        </div>
+        <div class="insert-name"> <!--입력창-->
+            <input type="text" id="writing" placeholder="이름과 코멘트를 적어주세요.">
+            <button type="submit" onclick="save_name()" class="insert-button">게시</button>
+        </div>
+    </div>
+
+    <div class="slidesize"> <!--캐러셀크기-->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcxkSXZ%2FbtsgtOCUbdh%2FRzql6h2LtLWMEZgS7YPECK%2Fimg.png"
+                            class="d-block w-100" alt="me1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbtngKq%2FbtsguMkcVig%2FhR76wGQiWJVEzsTm21efx1%2Fimg.png"
+                            class="d-block w-100" alt="me2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnlQ8w%2FbtsgtRTRokP%2F877TGkZPqSBskstkiXOKj0%2Fimg.png"
+                            class="d-block w-100" alt="me3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
